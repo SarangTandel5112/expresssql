@@ -2,11 +2,13 @@ import { Request, Response } from "express"
 import connectDB from "../DBconnection/connectDB";
 import getdata from "../query/getdata";
 import insert from "../query/insert";
+import update from "../query/update";
 import mysql from "mysql";
 
 const connection = connectDB;
 const getdetails = new getdata();
 const adddata = new insert();
+const updatedata = new update();
 
 class curdop {
 
@@ -45,6 +47,19 @@ class curdop {
             console.log(error);
         }
     }
+
+    public updatedata = async (req: Request, res: Response) => {
+        let id: any = "21";
+        let field = `age`;
+        let value = `100`;
+        var query = updatedata.updatefield(field, value, id) as string;
+        console.log(query);
+        connection?.query(query, (err, data) => {
+            res.send(data)
+            console.log(data);
+        })
+    }
+
 }
 
 export default curdop;

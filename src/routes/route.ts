@@ -14,6 +14,7 @@ class Routes {
     private getdata() {
         this.router.route("/getdetails").post(curd.getdata);
         this.router.route("/adddata").post(curd.adddata);
+        this.router.route("/updatedata").post(curd.updatedata);
     }
 }
 
